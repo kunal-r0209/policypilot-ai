@@ -1,139 +1,308 @@
-# # PolicyPilot AI
+# 🛡️ PolicyPilot AI
 
-## Live App
-🔗 https://insurance-rag-chatbot-hgr3.onrender.com
+## 🌐 Live Demo
 
-A high-performance Retrieval-Augmented Generation (RAG) AI assistant designed to answer complex insurance policy queries instantly.
-
-Built with FastAPI, LangChain, and Docker, this assistant retrieves accurate information from a FAISS vector database and uses the Groq (Llama-3) LLM to generate natural, context-aware responses.
+🚧 Deployment Coming Soon
 
 ---
 
-##  Features
+## 📖 Overview
 
-* **RAG Architecture:** retrieves precise context from indexed insurance PDF documents.
-* **FastAPI Backend:** Lightweight, asynchronous API handling.
-* **Vector Search:** Uses **FAISS** (Facebook AI Similarity Search) for millisecond-latency retrievals.
-* **Conversational Memory:** Remembers previous turns of the conversation for a fluid chat experience.
-* **Dockerized:** Fully containerized with a highly optimized, lightweight image (CPU-only PyTorch).
-* **Deployment Ready:** Configured for seamless deployment on Render/AWS.
+PolicyPilot AI is an intelligent insurance assistant that helps users understand insurance policies through natural language conversations.
 
----
+The application uses Retrieval-Augmented Generation (RAG) to search insurance documents, retrieve relevant information, and generate accurate responses using a Large Language Model (LLM).
 
-##  Tech Stack
-
-* **Language:** Python 3.10
-* **LLM:** Llama-3-8b (via Groq API)
-* **Embeddings:** Sentence-Transformers (`all-MiniLM-L6-v2`)
-* **Vector DB:** FAISS (CPU)
-* **Orchestration:** LangChain
-* **API Framework:** FastAPI & Uvicorn
-* **Containerization:** Docker
-* **Cloud-Server:**Render
+Built with FastAPI, LangChain, FAISS, and Groq Llama 3, PolicyPilot AI delivers fast and context-aware answers to insurance-related queries.
 
 ---
 
-##  Project Structure
+## 🚀 Features
+
+✅ AI-Powered Insurance Assistant
+
+✅ Retrieval-Augmented Generation (RAG)
+
+✅ Semantic Search using FAISS Vector Database
+
+✅ Groq Llama 3 Integration
+
+✅ Conversational Memory Support
+
+✅ FastAPI REST API
+
+✅ Interactive Swagger Documentation
+
+✅ Docker Support
+
+✅ Responsive User Interface
+
+✅ Production Deployment Ready
+
+---
+
+## 🛠️ Tech Stack
+
+### Backend
+
+- Python
+- FastAPI
+- Uvicorn
+
+### AI & Machine Learning
+
+- LangChain
+- Groq Llama 3
+- Sentence Transformers
+- HuggingFace Embeddings
+
+### Vector Database
+
+- FAISS (Facebook AI Similarity Search)
+
+### Deployment
+
+- Docker
+- Render
+
+---
+
+## 🏗️ System Architecture
+
+```text
+User Query
+     │
+     ▼
+FastAPI Backend
+     │
+     ▼
+LangChain RAG Pipeline
+     │
+     ▼
+FAISS Vector Search
+     │
+     ▼
+Relevant Insurance Documents
+     │
+     ▼
+Groq Llama 3 LLM
+     │
+     ▼
+AI Generated Response
+```
+
+---
+
+## 📂 Project Structure
 
 ```bash
+├── Data/
+│   └── insurance_documents/
+│
+├── faiss_insurance_index/
+│
+├── notebooks/
+│
 ├── src/
+│   ├── audio/
 │   ├── llm/
 │   ├── memory/
-│   ├── audio/
-│   └── rag/
-├── faiss_insurance_index/
+│   ├── rag/
+│   └── utils/
+│
+├── static/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+│
 ├── app.py
 ├── Dockerfile
 ├── requirements.txt
-└── .env.example
-                
+└── README.md
 ```
 
 ---
 
-# How to run Locally?
-### STEP-01 Clone the repository:
+## ⚙️ Installation
+
+### 1. Clone Repository
 
 ```bash
-git clone https://github.com/Rabilkhan786/insurance-rag-chatbot.git
-cd insurance-rag-chatbot
+git clone https://github.com/kunal-r0209/policypilot-ai.git
+cd policypilot-ai
 ```
 
-### Step-02 Create a virtual environment: :
+### 2. Create Virtual Environment
 
-# Windows
+#### Windows
+
 ```bash
 python -m venv venv
 venv\Scripts\activate
 ```
 
-# Mac/Linux
+#### Linux / Mac
+
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
 
-### STEP-03- install the requirements
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
+### 4. Configure Environment Variables
 
-### STEP-04 Create a .env file::
+Create a `.env` file in the root directory:
 
-```ini
-GROQ_API_KEY=your_groq_api_key_here
-# OPENAI_API_KEY=your_key (If using OpenAI)
+```env
+GROQ_API_KEY=your_groq_api_key
 ```
 
-### STEP-05 Run the App:
+### 5. Run Application
 
 ```bash
-uvicorn app:app --host 0.0.0.0 --port 8000
+uvicorn app:app --reload
 ```
 
-## Run with Docker:
+---
 
-### Step-01:
+## 🌐 Usage
+
+### Open Application
+
+```text
+http://localhost:8000
+```
+
+### API Documentation
+
+```text
+http://localhost:8000/docs
+```
+
+---
+
+## 🐳 Docker Setup
+
+### Build Docker Image
+
 ```bash
-docker build -t insurance-rag-agent .
+docker build -t policypilot-ai .
 ```
 
-###  Run The Docker Container:
-
+### Run Container
 
 ```bash
-docker run -p 8001:8000 --env-file .env insurance-rag-agent
+docker run -p 8000:8000 --env-file .env policypilot-ai
 ```
 
-### Open in Browser:
-```bash
-http://localhost:8001
-http://localhost:8001/docs
+### Open
+
+```text
+http://localhost:8000
 ```
 
+---
 
-## API Documentation
-Once the app is running, open your browser to access the interactive Swagger UI:
+## 📡 API Endpoints
 
-http://localhost:8000/docs (or port 8001 if using Docker)
+### Chat Endpoint
 
-## Key Endpoints
-POST /chat: Chat with the RAG agent.
+```http
+POST /chat
+```
 
-GET /health: Health check to ensure the API is running.
+Send insurance-related questions and receive AI-generated answers.
 
-## Deployment
+### Health Check
 
-This project is configured for Render.
+```http
+GET /health
+```
 
-1. Push code to GitHub.
+Verify API status.
 
-2. Create a new Web Service on Render.
+---
 
-3. Connect your repository.
+## 💡 Example Questions
 
-4. Add Environment Variables (GROQ_API_KEY) in the Render dashboard.
+- What is covered under this insurance policy?
+- What are the exclusions?
+- How can I file a claim?
+- Is there a waiting period?
+- What documents are required for claim settlement?
+- Can I renew my policy online?
 
-5. Render will automatically build using the Dockerfile
+---
+
+## 🎯 Future Enhancements
+
+- User Authentication
+- Multi-Policy Search
+- Voice-Based Queries
+- PDF Upload Support
+- Chat History Storage
+- Dark Mode
+- Multi-Language Support
+
+---
+
+## 📸 Screenshots
+
+Add screenshots of your application here.
+
+### Home Page
+
+```text
+screenshots/home.png
+```
+
+### Chat Interface
+
+```text
+screenshots/chat.png
+```
+
+### API Documentation
+
+```text
+screenshots/docs.png
+```
+
+---
+
+## 🎓 What I Learned
+
+- Building RAG Applications
+- FastAPI Backend Development
+- LangChain Integration
+- Vector Databases with FAISS
+- Prompt Engineering
+- Docker Containerization
+- API Deployment Workflows
+
+---
+
+## 👨‍💻 Developer
+
+### Kunal
+
+Aspiring Software Developer & AI Enthusiast
+
+GitHub:
+https://github.com/kunal-r0209
+
+---
+
+## ⭐ Support
+
+If you found this project useful, consider giving it a star on GitHub.
+
+---
+
+## 📄 License
+
+This project is intended for educational, learning, and portfolio purposes.
