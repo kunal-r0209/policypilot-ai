@@ -1,4 +1,4 @@
-# AI Insurance Assistant
+# # PolicyPilot AI
 
 ## Live App
 🔗 https://insurance-rag-chatbot-hgr3.onrender.com
